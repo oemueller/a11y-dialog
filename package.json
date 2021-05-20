@@ -1,6 +1,6 @@
 {
   "name": "a11y-dialog",
-  "version": "7.1.0",
+  "version": "8.0.0",
   "description": "A tiny script to make dialog windows accessible to assistive technology users.",
   "homepage": "https://github.com/KittyGiraudel/a11y-dialog",
   "license": "MIT",
@@ -49,6 +49,7 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
+    "body-scroll-lock": "^3.1.5",
     "focusable-selectors": "^0.3.0"
   }
 }

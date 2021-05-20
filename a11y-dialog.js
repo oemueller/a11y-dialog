@@ -1,4 +1,9 @@
 import focusableSelectors from 'focusable-selectors'
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 
 var TAB_KEY = 9
 var ESCAPE_KEY = 27
@@ -87,6 +92,10 @@ A11yDialog.prototype.show = function (event) {
   this.$el.removeAttribute('aria-hidden')
   this.shown = true
 
+  if (this.$el.querySelector('[role="document"]')) {
+    disableBodyScroll(this.$el.querySelector('[role="document"]'))
+  }
+
   // Set the focus to the first focusable child of the dialog element
   setFocusToFirstItem(this.$el)
 
@@ -118,6 +127,10 @@ A11yDialog.prototype.hide = function (event) {
 
   this.shown = false
   this.$el.setAttribute('aria-hidden', 'true')
+
+  if (this.$el.querySelector('[role="document"]')) {
+    enableBodyScroll(this.$el.querySelector('[role="document"]'))
+  }
 
   // If there was a focused element before the dialog was opened (and it has a
   // `focus` method), restore the focus back to it
